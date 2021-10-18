@@ -22,5 +22,11 @@ namespace ASP.NetCoreWebAPI.Controllers
         {
             return "Hello from GetAuthor";
         }
+
+        [Route("book/{id}/author/{authorid}")]
+        public string GetById(int id, int authorid)
+        {
+            return "Get By book Id and Author Id " +id + " "+ authorid;
+        }
     }
 }
