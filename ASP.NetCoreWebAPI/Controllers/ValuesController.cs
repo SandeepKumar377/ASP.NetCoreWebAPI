@@ -28,5 +28,11 @@ namespace ASP.NetCoreWebAPI.Controllers
         {
             return "Get By book Id and Author Id " +id + " "+ authorid;
         }
+        
+        [Route("Search")]
+        public string SearchBooks(int id, int authorid, string name, int rating, int price)
+        {
+            return "Id - " +id + " AuthorID -  "+ authorid + " Name - " + name + " Price - " + price + " Rating - " + rating;
+        }
     }
 }
