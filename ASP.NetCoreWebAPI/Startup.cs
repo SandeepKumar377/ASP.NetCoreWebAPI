@@ -26,15 +26,18 @@ namespace ASP.NetCoreWebAPI
 
             app.Use(async (context, next) =>
             {
-                await context.Response.WriteAsync("Hello from Use1 \n");
+                await context.Response.WriteAsync("Hello from Use1-1 \n");
                 await next();
-                await context.Response.WriteAsync("Hello from Use1 \n");
+                await context.Response.WriteAsync("Hello from Use1-2 \n");
             });
+
+            app.Map("/sandeep", CustomCode);
+
             app.Use(async (context, next) =>
             {
-                await context.Response.WriteAsync("Hello from Use2 \n");
+                await context.Response.WriteAsync("Hello from Use2-1 \n");
                 await next();
-                await context.Response.WriteAsync("Hello from Use2 \n");
+                await context.Response.WriteAsync("Hello from Use2-2 \n");
             });
             app.Use(async (context, next) =>
             {
@@ -55,6 +58,14 @@ namespace ASP.NetCoreWebAPI
             app.UseEndpoints(endpoints => 
             {
                 endpoints.MapControllers();
+            });
+        }
+
+        private void CustomCode(IApplicationBuilder app)
+        {
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Sandeep \n");
             });
         }
     }
