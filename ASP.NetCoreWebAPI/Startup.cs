@@ -13,7 +13,7 @@ namespace ASP.NetCoreWebAPI
     {
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -24,12 +24,7 @@ namespace ASP.NetCoreWebAPI
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello From Web API App!");
-                });
-
-                endpoints.MapGet("/test", async context =>
-                {
-                    await context.Response.WriteAsync("Hello From Web API App Test!");
+                    endpoints.MapControllers();
                 });
             });
         }
