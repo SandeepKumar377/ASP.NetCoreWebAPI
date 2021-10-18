@@ -19,6 +19,33 @@ namespace ASP.NetCoreWebAPI
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //app.Run(async context =>
+            //{
+            //    await context.Response.WriteAsync("Hello from Run");
+            //});
+
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Use1 \n");
+                await next();
+                await context.Response.WriteAsync("Hello from Use1 \n");
+            });
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Hello from Use2 \n");
+                await next();
+                await context.Response.WriteAsync("Hello from Use2 \n");
+            });
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("Request Completed \n");
+            });
+
+            //app.Run(async context =>
+            //{
+            //    await context.Response.WriteAsync("Hello from Run \n");
+            //});
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
