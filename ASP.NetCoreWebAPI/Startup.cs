@@ -25,27 +25,27 @@ namespace ASP.NetCoreWebAPI
             //    await context.Response.WriteAsync("Hello from Run");
             //});
 
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Hello from Use1-1 \n");
-                await next();
-                await context.Response.WriteAsync("Hello from Use1-2 \n");
-            });
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Hello from Use1-1 \n");
+            //    await next();
+            //    await context.Response.WriteAsync("Hello from Use1-2 \n");
+            //});
 
-            app.UseMiddleware<CustomMiddleware>();
+            //app.UseMiddleware<CustomMiddleware>();
 
-            app.Map("/sandeep", CustomCode);
+            //app.Map("/sandeep", CustomCode);
 
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Hello from Use2-1 \n");
-                await next();
-                await context.Response.WriteAsync("Hello from Use2-2 \n");
-            });
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Request Completed \n");
-            });
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Hello from Use2-1 \n");
+            //    await next();
+            //    await context.Response.WriteAsync("Hello from Use2-2 \n");
+            //});
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("Request Completed \n");
+            //});
 
             //app.Run(async context =>
             //{
@@ -58,7 +58,7 @@ namespace ASP.NetCoreWebAPI
             }
             app.UseRouting();
 
-            app.UseEndpoints(endpoints => 
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
