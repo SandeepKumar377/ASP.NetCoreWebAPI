@@ -15,6 +15,7 @@ namespace ASP.NetCoreWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddTransient<CustomMiddleware>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,6 +31,8 @@ namespace ASP.NetCoreWebAPI
                 await next();
                 await context.Response.WriteAsync("Hello from Use1-2 \n");
             });
+
+            app.UseMiddleware<CustomMiddleware>();
 
             app.Map("/sandeep", CustomCode);
 
