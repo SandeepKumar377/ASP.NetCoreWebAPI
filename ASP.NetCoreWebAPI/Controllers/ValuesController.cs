@@ -14,12 +14,14 @@ namespace ASP.NetCoreWebAPI.Controllers
         [Route("api/get-all")]
         [Route("get-all")] 
         [Route("getall")]
+        //[Route("[action]/[controller]")]     //Token Replacement Routing
         public string GetAll()
         {
             return "Hello from GetAll";
         } 
         
         [Route("api/get-all-authors")]
+        //[Route("[action]/[controller]")]     //Token Replacement Routing
         public string GetAllAuthors()
         {
             return "Hello from GetAuthor";
