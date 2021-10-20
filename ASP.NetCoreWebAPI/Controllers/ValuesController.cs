@@ -12,6 +12,8 @@ namespace ASP.NetCoreWebAPI.Controllers
     public class ValuesController : ControllerBase
     {
         [Route("api/get-all")]
+        [Route("get-all")] 
+        [Route("getall")]
         public string GetAll()
         {
             return "Hello from GetAll";
