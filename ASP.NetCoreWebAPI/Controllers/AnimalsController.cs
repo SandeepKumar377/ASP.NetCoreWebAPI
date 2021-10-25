@@ -53,7 +53,12 @@ namespace ASP.NetCoreWebAPI.Controllers
             { 
                 return BadRequest();
             }
-            return Ok(animals.FirstOrDefault(x=>x.Id==id));
+            var animal=animals.FirstOrDefault(x=>x.Id==id);
+            if (animal==null)
+            {
+                return NotFound();
+            }
+            return Ok(animal);
         }
         [HttpPost("")]
         public IActionResult GetAnimals(AnimalModel animal)
