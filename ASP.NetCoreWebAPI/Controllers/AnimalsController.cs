@@ -12,6 +12,7 @@ namespace ASP.NetCoreWebAPI.Controllers
     [ApiController]
     public class AnimalsController : ControllerBase
     {
+        [Route("", Name ="ALL")]
         public IActionResult GetAnimals()
         {
             var animals = new List<AnimalModel>()
@@ -20,6 +21,18 @@ namespace ASP.NetCoreWebAPI.Controllers
                 new AnimalModel() {Id=2, Name="Tigar"}
             };
             return Ok(animals);
+        }
+        
+        [Route("test")]
+        public IActionResult GetAnimalsTest()
+        {
+            var animals = new List<AnimalModel>()
+            {
+                new AnimalModel() {Id=1, Name="Dog"},
+                new AnimalModel() {Id=2, Name="Tigar"}
+            };
+            //return AcceptedAtAction("GetAnimals");  //Call route by Action Name
+            return AcceptedAtRoute("All");  //Call route by Route Name
         }
     }
 }
