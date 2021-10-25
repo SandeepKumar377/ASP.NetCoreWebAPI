@@ -12,27 +12,37 @@ namespace ASP.NetCoreWebAPI.Controllers
     [ApiController]
     public class AnimalsController : ControllerBase
     {
-        [Route("", Name ="ALL")]
-        public IActionResult GetAnimals()
+        private List<AnimalModel> animals = null;
+        public AnimalsController()
         {
-            var animals = new List<AnimalModel>()
+            animals = new List<AnimalModel>()
             {
                 new AnimalModel() {Id=1, Name="Dog"},
                 new AnimalModel() {Id=2, Name="Tigar"}
             };
+        }
+
+        [Route("", Name ="ALL")]
+        public IActionResult GetAnimals()
+        {
             return Ok(animals);
         }
         
         [Route("test")]
         public IActionResult GetAnimalsTest()
         {
-            var animals = new List<AnimalModel>()
-            {
-                new AnimalModel() {Id=1, Name="Dog"},
-                new AnimalModel() {Id=2, Name="Tigar"}
-            };
             //return AcceptedAtAction("GetAnimals");  //Call route by Action Name
             return AcceptedAtRoute("All");  //Call route by Route Name
+        }
+        
+        [Route("{name}")]
+        public IActionResult GetAnimalsByName(string name)
+        {
+            if (!name.Contains("ABC")) // if route not contains ABC example - /api/animals/testAC or /api/animals/testABC
+            { 
+                return BadRequest();
+            }
+            return Ok(animals);
         }
     }
 }
