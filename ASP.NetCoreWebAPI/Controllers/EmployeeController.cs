@@ -39,8 +39,8 @@ namespace ASP.NetCoreWebAPI.Controllers
                 }
             };
         }
-        [Route("{id}")]
-        
+
+        [Route("{id}")]        
         public IActionResult GetEmployees(int Id)
         {
             if (Id==0)
@@ -51,6 +51,16 @@ namespace ASP.NetCoreWebAPI.Controllers
                 new EmployeeModel(){ Id = 1, Name = "Empoluee1" },
                 new EmployeeModel(){ Id = 2, Name = "Empoluee2" }}
             );
+        }
+
+        [Route("{id}/basic")]
+        public ActionResult<EmployeeModel> GetEmployeeBasicDetails(int Id)
+        {
+            if (Id == 0)
+            {
+                return NotFound();
+            }
+            return new EmployeeModel() { Id = 1, Name = "Empoluee1" };
         }
     }
 }
