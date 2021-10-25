@@ -32,7 +32,8 @@ namespace ASP.NetCoreWebAPI.Controllers
         public IActionResult GetAnimalsTest()
         {
             //return AcceptedAtAction("GetAnimals");  //Call route by Action Name
-            return AcceptedAtRoute("All");  //Call route by Route Name
+            //return LocalRedirect("~/api/animals");  //Local Redirect method
+            return LocalRedirectPermanent("~/api/animals");  //Permanent Redirect method
         }
         
         [Route("{name}")]
