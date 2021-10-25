@@ -25,8 +25,8 @@ namespace ASP.NetCoreWebAPI.Controllers
         //public List<EmployeeModel> GetEmployees()
 
         //use List<EmployeeModel> or IEnumerable<EmployeeModel> and for async data IAsyncEnumerable<EmployeeModel>
+        [Route("")]
         public IEnumerable<EmployeeModel> GetEmployees()
-
         {
             return new List<EmployeeModel>() {
                 new EmployeeModel(){
@@ -38,6 +38,19 @@ namespace ASP.NetCoreWebAPI.Controllers
                     Name = "Empoluee2"
                 }
             };
+        }
+        [Route("{id}")]
+        
+        public IActionResult GetEmployees(int Id)
+        {
+            if (Id==0)
+            {
+                return NotFound();
+            }
+            return Ok(new List<EmployeeModel>() {
+                new EmployeeModel(){ Id = 1, Name = "Empoluee1" },
+                new EmployeeModel(){ Id = 2, Name = "Empoluee2" }}
+            );
         }
     }
 }
