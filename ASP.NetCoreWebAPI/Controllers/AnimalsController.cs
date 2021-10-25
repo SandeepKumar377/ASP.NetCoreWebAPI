@@ -44,5 +44,23 @@ namespace ASP.NetCoreWebAPI.Controllers
             }
             return Ok(animals);
         }
+        
+        [Route("{id:int}")]
+        public IActionResult GetAnimalsById(int id)
+        {
+            if (id==0)
+            { 
+                return BadRequest();
+            }
+            return Ok(animals.FirstOrDefault(x=>x.Id==id));
+        }
+        [HttpPost("")]
+        public IActionResult GetAnimals(AnimalModel animal)
+        { 
+            animals.Add(animal);
+            
+            //return Created("~/api/animals/" + animal.Id, animal);
+            return CreatedAtAction("GetAnimalsById", new { id=animal.Id}, animal);  //Get Proper Route of Action method
+        }
     }
 }
