@@ -10,21 +10,16 @@ namespace ASP.NetCoreWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [BindProperties]    //BindProperties at controller level
+    [BindProperties] 
     public class CountriesController : ControllerBase
-    {
-       //[BindProperty]           //For httpPost Method
-       //[BindProperty(SupportsGet =true)]           //For httpGet Method
-        public string Name { get; set; }
-        public int Population { get; set; }
-        public int Area { get; set; }
-        //public CountryModel Country { get; set; }
+    { 
+        public CountryModel Country { get; set; }
 
-        //[HttpPost("")]
         [HttpPost("")]
+        //[HttpGet("")]
         public IActionResult AddCountry()
         {
-            return Ok($"Name = {this.Name}, Population = {this.Population}, Area = {this.Area}");
+            return Ok($"Name = {this.Country.Name}, Population = {this.Country.Population}, Area = {this.Country.Area}");
         }
     }
 }
