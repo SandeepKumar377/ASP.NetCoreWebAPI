@@ -14,10 +14,12 @@ namespace ASP.NetCoreWebAPI.Controllers
     {
         public CountryModel Country { get; set; }
 
-        [HttpPost("")]
-        public IActionResult AddCountry([FromQuery]int id, [FromQuery]CountryModel country)
+
+        //[FromRoute]and[FromQuery] attribute Bind Route date ex-api/countries/India/15222/32?id=4
+        [HttpPost("{name}/{Population}/{Area}")]
+        public IActionResult AddCountry([FromQuery]int id, [FromRoute]CountryModel country)
         {
-            return Ok($"Name = {country.Name}, Population = {country.Population}, Area = {country.Area}");
+            return Ok($"Id = {id}, Name = {country.Name}, Population = {country.Population}, Area = {country.Area}");
         }
     }
 }
