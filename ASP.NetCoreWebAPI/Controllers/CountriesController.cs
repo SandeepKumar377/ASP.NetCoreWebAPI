@@ -15,11 +15,11 @@ namespace ASP.NetCoreWebAPI.Controllers
         public CountryModel Country { get; set; }
 
 
-        //[FromRoute]and[FromForm] attribute Bind Route date ex-/api/countries/4
+        //[FromRoute]and[FromHeader] attribute Bind Route date ex-/api/countries/4
         [HttpPost("{id}")]
-        public IActionResult AddCountry([FromRoute]int id, [FromForm]CountryModel country)
+        public IActionResult AddCountry([FromRoute]int id, [FromHeader]string name, [FromHeader]int age)
         {
-            return Ok($"Id = {id}, Name = {country.Name}, Population = {country.Population}, Area = {country.Area}");
+            return Ok($"Id = {id}, Name = {name}, Age = {age}");
         }
     }
 }
