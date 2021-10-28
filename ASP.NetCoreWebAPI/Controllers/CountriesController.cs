@@ -29,5 +29,12 @@ namespace ASP.NetCoreWebAPI.Controllers
         {
             return Ok(countries);
         }
+        
+        
+        [HttpGet("{id}")]
+        public IActionResult SearchCountries([ModelBinder(Name ="Id")]CountryModel country)
+        {
+            return Ok(country);
+        }
     }
 }
