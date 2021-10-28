@@ -10,16 +10,16 @@ namespace ASP.NetCoreWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [BindProperties] 
+    //[BindProperties(SupportsGet = true)] 
     public class CountriesController : ControllerBase
     { 
         public CountryModel Country { get; set; }
 
         [HttpPost("")]
         //[HttpGet("")]
-        public IActionResult AddCountry()
+        public IActionResult AddCountry(CountryModel country)
         {
-            return Ok($"Name = {this.Country.Name}, Population = {this.Country.Population}, Area = {this.Country.Area}");
+            return Ok($"Name = {country.Name}, Population = {country.Population}, Area = {country.Area}");
         }
     }
 }
