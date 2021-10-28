@@ -12,14 +12,13 @@ namespace ASP.NetCoreWebAPI.Controllers
     [ApiController]
     //[BindProperties(SupportsGet = true)] 
     public class CountriesController : ControllerBase
-    { 
+    {
         public CountryModel Country { get; set; }
 
-        [HttpPost("")]
-        //[HttpGet("")]
-        public IActionResult AddCountry(CountryModel country)
+        [HttpGet("{name}")]
+        public IActionResult AddCountry([FromQuery]string name)
         {
-            return Ok($"Name = {country.Name}, Population = {country.Population}, Area = {country.Area}");
+            return Ok($"Name = {name}");
         }
     }
 }
