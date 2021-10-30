@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ASP.NetCoreWebAPI.Repository;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ namespace ASP.NetCoreWebAPI
         {
             services.AddControllers();
             services.AddTransient<CustomMiddleware>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

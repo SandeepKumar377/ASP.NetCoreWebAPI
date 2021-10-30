@@ -13,10 +13,10 @@ namespace ASP.NetCoreWebAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductRepository _productRepository;
-        public ProductController()
+        private readonly IProductRepository _productRepository;
+        public ProductController(IProductRepository productRepository)
         {
-            _productRepository = new ProductRepository();
+            _productRepository = productRepository;
         }
 
         [HttpPost("")]

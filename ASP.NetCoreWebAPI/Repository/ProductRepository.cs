@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ASP.NetCoreWebAPI.Repository
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private List<ProductModel> products = new List<ProductModel>();
         public int AddProduct(ProductModel product)
         {
-            product.Id=products.Count+1;
+            product.Id = products.Count + 1;
             products.Add(product);
             return product.Id;
         }
