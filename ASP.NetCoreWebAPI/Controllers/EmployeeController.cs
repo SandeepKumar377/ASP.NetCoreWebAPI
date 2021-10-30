@@ -1,4 +1,5 @@
 ﻿using ASP.NetCoreWebAPI.Models;
+using ASP.NetCoreWebAPI.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -61,6 +62,13 @@ namespace ASP.NetCoreWebAPI.Controllers
                 return NotFound();
             }
             return new EmployeeModel() { Id = 1, Name = "Empoluee1" };
+        }
+
+        [HttpGet("name")]
+        public IActionResult GetName([FromServices] IProductRepository _productRepository)
+        {
+            var name = _productRepository.GetName();
+            return Ok(name);
         }
     }
 }
