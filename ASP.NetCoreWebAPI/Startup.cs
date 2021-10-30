@@ -17,7 +17,7 @@ namespace ASP.NetCoreWebAPI
         {
             services.AddControllers();
             services.AddTransient<CustomMiddleware>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
