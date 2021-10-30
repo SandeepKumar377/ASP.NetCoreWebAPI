@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace ASP.NetCoreWebAPI.Repository
 {
-    public class ProductRepository : IProductRepository
+    public class TestRepository : IProductRepository
     {
-        private List<ProductModel> products = new List<ProductModel>();
         public int AddProduct(ProductModel product)
         {
-            product.Id = products.Count + 1;
-            products.Add(product);
-            return product.Id;
+            throw new NotImplementedException();
         }
 
         public List<ProductModel> GetAllProducts()
         {
-            return products;
+            throw new NotImplementedException();
         }
 
         public string GetName()
         {
-            return "Name from ProductRepository";
+            return "Name from TestRepository";
         }
     }
 }

@@ -28,5 +28,11 @@ namespace ASP.NetCoreWebAPI.Controllers
             var products = _productRepository1.GetAllProducts();
             return Ok(products);
         }
+        [HttpGet("")]
+        public IActionResult GetName()
+        {
+            var name = _productRepository1.GetName();
+            return Ok(name);
+        }
     }
 }
